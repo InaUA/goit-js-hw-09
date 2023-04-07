@@ -42,10 +42,7 @@ function onBtnStartClick() {
     const timeToFinish = choosenDate - Date.now();
     const { days, hours, minutes, seconds } = convertMs(timeToFinish);
 
-    day.textContent = addLeadingZero(days);
-    hour.textContent = addLeadingZero(hours);
-    min.textContent = addLeadingZero(minutes);
-    sec.textContent = addLeadingZero(seconds);
+    updateCountdown(days, hours, minutes, seconds);
 
     if (timeToFinish < 1000) {
       spans.forEach(item => item.classList.toggle('end'));
@@ -54,7 +51,12 @@ function onBtnStartClick() {
     }
   }, 1000);
 }
-
+function updateCountdown(days, hours, minutes, seconds) {
+  day.textContent = addLeadingZero(days);
+  hour.textContent = addLeadingZero(hours);
+  min.textContent = addLeadingZero(minutes);
+  sec.textContent = addLeadingZero(seconds);
+};
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
